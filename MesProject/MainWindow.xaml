@@ -5,8 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MesProject"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        WindowStartupLocation="CenterScreen"
+        Title="生产监控平台" Height="750" Width="1200">
+    <WindowChrome.WindowChrome>
+        <WindowChrome GlassFrameThickness="0" />
+    </WindowChrome.WindowChrome>
+    
     <Grid>
+        <Grid.Background>
+            <RadialGradientBrush>
+                <GradientStop Color="#285173" Offset="0" />
+                <GradientStop Color="#244967" Offset="0.5" />
+                <GradientStop Color="#14273a" Offset="1" />
+            </RadialGradientBrush>
+        </Grid.Background>
+        
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition />
