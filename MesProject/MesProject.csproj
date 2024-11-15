@@ -9,12 +9,21 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Resource\Fonts\" />
-    <Folder Include="Resource\Images\" />
+    <None Remove="Resource\Fonts\DigitalDisplay.ttf" />
+    <None Remove="Resource\Fonts\iconfont.ttf" />
+    <None Remove="Resource\Images\Logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Views\" />
     <Folder Include="ViewModels\" />
     <Folder Include="Models\" />
-    <Folder Include="Styles\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resource\Fonts\DigitalDisplay.ttf" />
+    <Resource Include="Resource\Fonts\Iconfont.ttf" />
+    <Resource Include="Resource\Images\Logo.png" />
   </ItemGroup>
 
 </Project>

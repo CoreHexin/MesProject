@@ -1,29 +1,69 @@
-﻿<Window x:Class="MesProject.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:MesProject"
-        mc:Ignorable="d"
-        WindowStartupLocation="CenterScreen"
-        Title="生产监控平台" Height="750" Width="1200">
+﻿<Window
+    x:Class="MesProject.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:MesProject"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="生产监控平台"
+    Width="1200"
+    Height="750"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
     <WindowChrome.WindowChrome>
         <WindowChrome GlassFrameThickness="0" />
     </WindowChrome.WindowChrome>
-    
+
     <Grid>
         <Grid.Background>
             <RadialGradientBrush>
-                <GradientStop Color="#285173" Offset="0" />
-                <GradientStop Color="#244967" Offset="0.5" />
-                <GradientStop Color="#14273a" Offset="1" />
+                <GradientStop Offset="0" Color="#285173" />
+                <GradientStop Offset="0.5" Color="#244967" />
+                <GradientStop Offset="1" Color="#14273a" />
             </RadialGradientBrush>
         </Grid.Background>
-        
+
         <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
+
+        <Border
+            Grid.Row="0"
+            BorderBrush="Gray"
+            BorderThickness="0,0,0,1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Image
+                    Grid.Column="0"
+                    Margin="5"
+                    Source="/Resource/Images/Logo.png" />
+
+                <TextBlock
+                    Grid.Column="1"
+                    Margin="5,0,0,0"
+                    VerticalAlignment="Center"
+                    FontSize="20"
+                    Foreground="White"
+                    Text="生产监控平台" />
+
+                <StackPanel
+                    Grid.Column="2"
+                    Margin="0,0,0,15"
+                    HorizontalAlignment="Right"
+                    Orientation="Horizontal">
+                    <Button Content="&#xe624;" Style="{StaticResource WindowControlButtonStyle}" />
+                    <Button Content="&#xe600;" Style="{StaticResource WindowControlButtonStyle}" />
+                    <Button Content="&#xe609;" Style="{StaticResource WindowCloseButtonStyle}" />
+                </StackPanel>
+
+            </Grid>
+        </Border>
     </Grid>
 </Window>
