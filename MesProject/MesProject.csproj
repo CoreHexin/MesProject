@@ -15,10 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Resource Include="Resource\Fonts\DigitalDisplay.ttf" />
     <Resource Include="Resource\Fonts\Iconfont.ttf" />
     <Resource Include="Resource\Images\Logo.png" />

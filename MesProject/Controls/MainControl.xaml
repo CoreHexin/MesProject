@@ -6,7 +6,7 @@
     xmlns:local="clr-namespace:MesProject.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="clr-namespace:MesProject.ViewModels"
-    d:Background="Gray"
+    d:Background="#14273a"
     d:DataContext="{d:DesignInstance vm:MainWindowViewModel}"
     d:DesignHeight="450"
     d:DesignWidth="1200"
@@ -124,7 +124,31 @@
                 Grid.Column="0"
                 Margin="10"
                 Columns="1">
-                <GroupBox Header="环境" />
+                <GroupBox Header="环境">
+                    <ItemsControl HorizontalAlignment="Center" ItemsSource="{Binding EnvironmentModels}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="10">
+                                    <TextBlock
+                                        HorizontalAlignment="Center"
+                                        FontSize="22"
+                                        Foreground="#2bedf1"
+                                        Text="{Binding Value}" />
+                                    <TextBlock
+                                        HorizontalAlignment="Center"
+                                        FontSize="12"
+                                        Foreground="White"
+                                        Text="{Binding Name}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <UniformGrid Columns="4" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
+                </GroupBox>
 
                 <GroupBox Margin="0,5" Header="产能" />
 
