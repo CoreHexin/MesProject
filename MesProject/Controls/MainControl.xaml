@@ -41,9 +41,13 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="4*" />
+                <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
-            <StackPanel Grid.Column="0" Orientation="Horizontal">
+            <StackPanel
+                Grid.Column="0"
+                HorizontalAlignment="Center"
+                Orientation="Horizontal">
                 <TextBlock
                     Margin="10"
                     VerticalAlignment="Center"
@@ -97,6 +101,15 @@
                     ItemsSource="{Binding UnqualifiedCount}" />
             </StackPanel>
 
+            <Button
+                Grid.Column="2"
+                Width="60"
+                Height="35"
+                Margin="20,0"
+                VerticalAlignment="Center"
+                Content="配置"
+                Style="{StaticResource RegularButtonStyle}"
+                Tag="&#xe625;" />
         </Grid>
 
     </Grid>
