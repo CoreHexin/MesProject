@@ -7,10 +7,10 @@
     xmlns:local="clr-namespace:MesProject"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="clr-namespace:MesProject.ViewModels"
-    d:DataContext="{d:DesignInstance vm:MainWindowViewModel}"
     Title="生产监控平台"
     Width="1200"
     Height="750"
+    d:DataContext="{d:DesignInstance vm:MainWindowViewModel}"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <WindowChrome.WindowChrome>
@@ -33,7 +33,7 @@
 
         <Border
             Grid.Row="0"
-            BorderBrush="Gray"
+            BorderBrush="#9918aabd"
             BorderThickness="0,0,0,1">
             <Grid>
                 <Grid.ColumnDefinitions>
