@@ -86,6 +86,19 @@ namespace MesProject.ViewModels
 
         public List<EnvironmentModel> EnvironmentModels { get; set; }
 
+        private List<AlarmModel> _alarmModels;
+
+        // 报警集合
+        public List<AlarmModel> AlarmModels
+        {
+            get { return _alarmModels; }
+            set
+            {
+                _alarmModels = value;
+                RaisePropertyChanged();
+            }
+        }
+
         // 产能树状图数据集
         public ISeries[] CapacitySeries { get; set; }
 
@@ -114,6 +127,38 @@ namespace MesProject.ViewModels
                 new EnvironmentModel() { Name = "PM2.5", Value = 20 },
                 new EnvironmentModel() { Name = "硫化氢(PPM)", Value = 15 },
                 new EnvironmentModel() { Name = "氮气(PPM)", Value = 18 },
+            };
+
+            _alarmModels = new List<AlarmModel>()
+            {
+                new AlarmModel()
+                {
+                    Num = "01",
+                    Message = "设备温度过高",
+                    DateTime = DateTime.Now,
+                    Duration = 7,
+                },
+                new AlarmModel()
+                {
+                    Num = "02",
+                    Message = "车间温度过高",
+                    DateTime = DateTime.Now,
+                    Duration = 10,
+                },
+                new AlarmModel()
+                {
+                    Num = "03",
+                    Message = "设备转速过快",
+                    DateTime = DateTime.Now,
+                    Duration = 12,
+                },
+                new AlarmModel()
+                {
+                    Num = "04",
+                    Message = "设备气压偏低",
+                    DateTime = DateTime.Now,
+                    Duration = 90,
+                },
             };
 
             CapacitySeries = new ISeries[]

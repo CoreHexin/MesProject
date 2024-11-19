@@ -126,6 +126,7 @@
                 Grid.Column="0"
                 Margin="10"
                 Columns="1">
+                <!--  环境  -->
                 <GroupBox Header="环境">
                     <ItemsControl HorizontalAlignment="Center" ItemsSource="{Binding EnvironmentModels}">
                         <ItemsControl.ItemTemplate>
@@ -151,7 +152,7 @@
                         </ItemsControl.ItemsPanel>
                     </ItemsControl>
                 </GroupBox>
-
+                <!--  产能  -->
                 <GroupBox Margin="0,5" Header="产能">
                     <Grid>
                         <lvc:CartesianChart
@@ -187,7 +188,7 @@
                         </StackPanel>
                     </Grid>
                 </GroupBox>
-
+                <!--  质量  -->
                 <GroupBox Header="质量">
                     <lvc:CartesianChart
                         Height="{Binding ActualHeight, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=GroupBox}, Converter={converters:ChartHeightConverter}}"
@@ -197,6 +198,80 @@
                         YAxes="{Binding QualityYAxes}" />
                 </GroupBox>
             </UniformGrid>
+
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Image Margin="15" Source="/Resource/Images/device.png" />
+
+                <Grid Grid.Row="1" Margin="10,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Margin="0,0,0,5" Orientation="Horizontal">
+                        <TextBlock
+                            Margin="0,0,5,0"
+                            VerticalAlignment="Center"
+                            FontFamily="{StaticResource IconFont}"
+                            FontSize="16"
+                            Foreground="White"
+                            Text="&#xe68d;" />
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontSize="16"
+                            Foreground="White"
+                            Text="报警记录" />
+                    </StackPanel>
+
+                    <ItemsControl Grid.Row="1" ItemsSource="{Binding AlarmModels}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="0,0,0,5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="50" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Ellipse
+                                        Grid.Column="0"
+                                        Width="5"
+                                        Height="5"
+                                        Margin="0,0,10,0"
+                                        Fill="Red" />
+                                    <TextBlock
+                                        Grid.Column="1"
+                                        Margin="0,0,5,0"
+                                        Foreground="#992bedf1"
+                                        Text="{Binding Num}" />
+                                    <TextBlock
+                                        Grid.Column="2"
+                                        Margin="0,0,5,0"
+                                        Foreground="#992bedf1"
+                                        Text="{Binding Message}" />
+                                    <TextBlock
+                                        Grid.Column="3"
+                                        Margin="0,0,10,0"
+                                        Foreground="#992bedf1"
+                                        Text="{Binding DateTime, Converter={converters:DateTimeConverter}}" />
+                                    <TextBlock
+                                        Grid.Column="4"
+                                        Foreground="#992bedf1"
+                                        Text="{Binding Duration, StringFormat=时长{0}秒}" />
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Grid>
+            </Grid>
 
         </Grid>
     </Grid>
