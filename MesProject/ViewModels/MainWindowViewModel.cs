@@ -92,6 +92,12 @@ namespace MesProject.ViewModels
         public Axis[] CapacityXAxes { get; set; }
         public Axis[] CapacityYAxes { get; set; }
 
+        // 质量折线图数据集
+        public ISeries[] QualitySeries { get; set; }
+
+        public Axis[] QualityXAxes { get; set; }
+        public Axis[] QualityYAxes { get; set; }
+
         public MainWindowViewModel()
         {
             UpdateTime();
@@ -156,6 +162,37 @@ namespace MesProject.ViewModels
                     TextSize = 10,
                     ForceStepToMin = true,
                     MinStep = 100,
+                    MinLimit = 0,
+                    SeparatorsPaint = new SolidColorPaint(SKColors.White.WithAlpha(50))
+                    {
+                        PathEffect = new DashEffect(new float[] { 3, 3 }),
+                    },
+                },
+            };
+
+            QualitySeries = new ISeries[]
+            {
+                new LineSeries<int> { Values = new int[] { 8, 2, 7, 6, 4, 14 }, Name = "质量" },
+            };
+
+            QualityXAxes = new Axis[]
+            {
+                new Axis
+                {
+                    Labels = new string[] { "1#", "2#", "3#", "4#", "5#", "6#" },
+                    LabelsPaint = new SolidColorPaint(SKColors.White),
+                    TextSize = 10,
+                },
+            };
+
+            QualityYAxes = new Axis[]
+            {
+                new Axis
+                {
+                    LabelsPaint = new SolidColorPaint(SKColors.White),
+                    TextSize = 10,
+                    MinStep = 5,
+                    ForceStepToMin = true,
                     MinLimit = 0,
                     SeparatorsPaint = new SolidColorPaint(SKColors.White.WithAlpha(50))
                     {

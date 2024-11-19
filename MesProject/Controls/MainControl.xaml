@@ -186,10 +186,16 @@
                                 Text="不良计数" />
                         </StackPanel>
                     </Grid>
-
                 </GroupBox>
 
-                <GroupBox Header="质量" />
+                <GroupBox Header="质量">
+                    <lvc:CartesianChart
+                        Height="{Binding ActualHeight, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=GroupBox}, Converter={converters:ChartHeightConverter}}"
+                        Series="{Binding QualitySeries}"
+                        TooltipTextSize="10"
+                        XAxes="{Binding QualityXAxes}"
+                        YAxes="{Binding QualityYAxes}" />
+                </GroupBox>
             </UniformGrid>
 
         </Grid>
