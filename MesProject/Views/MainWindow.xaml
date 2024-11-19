@@ -9,7 +9,7 @@
     xmlns:vm="clr-namespace:MesProject.ViewModels"
     Title="生产监控平台"
     Width="1200"
-    Height="750"
+    Height="800"
     d:DataContext="{d:DesignInstance vm:MainWindowViewModel}"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">

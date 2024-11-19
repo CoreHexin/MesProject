@@ -25,7 +25,6 @@
                                 <TextBlock
                                     Margin="5,0"
                                     VerticalAlignment="Center"
-                                    FontWeight="Bold"
                                     Foreground="White"
                                     Text="{TemplateBinding Header}" />
                             </StackPanel>

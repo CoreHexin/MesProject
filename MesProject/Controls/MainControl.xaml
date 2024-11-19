@@ -2,14 +2,16 @@
     x:Class="MesProject.Controls.MainControl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="clr-namespace:MesProject.ValueConverters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:MesProject.Controls"
+    xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="clr-namespace:MesProject.ViewModels"
     d:Background="#14273a"
     d:DataContext="{d:DesignInstance vm:MainWindowViewModel}"
-    d:DesignHeight="450"
-    d:DesignWidth="1200"
+    d:DesignHeight="750"
+    d:Width="1200"
     mc:Ignorable="d">
     <UserControl.Resources>
         <DataTemplate x:Key="CountTemplate">
@@ -34,7 +36,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="4*" />
+            <RowDefinition Height="5*" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
@@ -115,9 +117,9 @@
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
             <UniformGrid
@@ -150,7 +152,42 @@
                     </ItemsControl>
                 </GroupBox>
 
-                <GroupBox Margin="0,5" Header="产能" />
+                <GroupBox Margin="0,5" Header="产能">
+                    <Grid>
+                        <lvc:CartesianChart
+                            Height="{Binding ActualHeight, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=GroupBox}, Converter={converters:ChartHeightConverter}}"
+                            Series="{Binding CapacitySeries}"
+                            TooltipTextSize="10"
+                            XAxes="{Binding CapacityXAxes}"
+                            YAxes="{Binding CapacityYAxes}" />
+
+                        <StackPanel
+                            Margin="0,0,10,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Orientation="Horizontal">
+                            <Border
+                                Width="6"
+                                Height="6"
+                                Margin="0,0,5,0"
+                                Background="#2196f3" />
+                            <TextBlock
+                                FontSize="10"
+                                Foreground="White"
+                                Text="生产计数" />
+                            <Border
+                                Width="6"
+                                Height="6"
+                                Margin="5,0"
+                                Background="IndianRed" />
+                            <TextBlock
+                                FontSize="10"
+                                Foreground="White"
+                                Text="不良计数" />
+                        </StackPanel>
+                    </Grid>
+
+                </GroupBox>
 
                 <GroupBox Header="质量" />
             </UniformGrid>
