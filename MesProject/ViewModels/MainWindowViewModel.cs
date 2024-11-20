@@ -1,4 +1,5 @@
 ﻿using LiveChartsCore;
+using LiveChartsCore.Measure;
 using LiveChartsCore.SkiaSharpView;
 using LiveChartsCore.SkiaSharpView.Painting;
 using LiveChartsCore.SkiaSharpView.Painting.Effects;
@@ -110,6 +111,11 @@ namespace MesProject.ViewModels
 
         public Axis[] QualityXAxes { get; set; }
         public Axis[] QualityYAxes { get; set; }
+
+        // 数据异常报警比例饼图数据集
+        public ISeries[] AlarmSeries { get; set; }
+
+        public SolidColorPaint AlarmLegentTextPaint { get; set; }
 
         public MainWindowViewModel()
         {
@@ -243,6 +249,50 @@ namespace MesProject.ViewModels
                     {
                         PathEffect = new DashEffect(new float[] { 3, 3 }),
                     },
+                },
+            };
+
+            AlarmSeries = new ISeries[]
+            {
+                new PieSeries<double>
+                {
+                    Values = new double[] { 20 },
+                    Name = "压差",
+                    DataLabelsSize = 10,
+                    DataLabelsPosition = PolarLabelsPosition.Middle,
+                    DataLabelsPaint = new SolidColorPaint(SKColors.White),
+                    DataLabelsFormatter = point =>
+                        "压差 " + point.Coordinate.PrimaryValue.ToString(),
+                },
+                new PieSeries<double>
+                {
+                    Values = new double[] { 40 },
+                    Name = "振动",
+                    DataLabelsSize = 10,
+                    DataLabelsPosition = PolarLabelsPosition.Middle,
+                    DataLabelsPaint = new SolidColorPaint(SKColors.White),
+                    DataLabelsFormatter = point =>
+                        "振动 " + point.Coordinate.PrimaryValue.ToString(),
+                },
+                new PieSeries<double>
+                {
+                    Values = new double[] { 10 },
+                    Name = "设备温度",
+                    DataLabelsSize = 10,
+                    DataLabelsPosition = PolarLabelsPosition.Middle,
+                    DataLabelsPaint = new SolidColorPaint(SKColors.White),
+                    DataLabelsFormatter = point =>
+                        "设备温度 " + point.Coordinate.PrimaryValue.ToString(),
+                },
+                new PieSeries<double>
+                {
+                    Values = new double[] { 30 },
+                    Name = "光照",
+                    DataLabelsSize = 10,
+                    DataLabelsPosition = PolarLabelsPosition.Middle,
+                    DataLabelsPaint = new SolidColorPaint(SKColors.White),
+                    DataLabelsFormatter = point =>
+                        "光照 " + point.Coordinate.PrimaryValue.ToString(),
                 },
             };
         }

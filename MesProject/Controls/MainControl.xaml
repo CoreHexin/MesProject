@@ -199,16 +199,17 @@
                 </GroupBox>
             </UniformGrid>
 
-            <Grid Grid.Column="1">
+            <Grid Grid.Column="1" Margin="10">
                 <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
-                <Image Margin="15" Source="/Resource/Images/device.png" />
+                <Image Grid.Row="0" Source="/Resource/Images/device.png" />
 
-                <Grid Grid.Row="1" Margin="10,0">
+                <!--  报警记录  -->
+                <Grid Grid.Row="1" Margin="10">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition />
@@ -271,6 +272,12 @@
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
                 </Grid>
+
+                <!--  数据异常报警比例  -->
+                <GroupBox Grid.Row="2" Header="数据异常报警比例">
+                    <lvc:PieChart Height="{Binding ActualHeight, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=GroupBox}, Converter={converters:ChartHeightConverter}}" Series="{Binding AlarmSeries}" />
+                </GroupBox>
+
             </Grid>
 
         </Grid>
