@@ -152,6 +152,7 @@
                         </ItemsControl.ItemsPanel>
                     </ItemsControl>
                 </GroupBox>
+
                 <!--  产能  -->
                 <GroupBox Margin="0,5" Header="产能">
                     <Grid>
@@ -188,6 +189,7 @@
                         </StackPanel>
                     </Grid>
                 </GroupBox>
+
                 <!--  质量  -->
                 <GroupBox Header="质量">
                     <lvc:CartesianChart
@@ -280,6 +282,46 @@
 
             </Grid>
 
+            <UniformGrid
+                Grid.Column="2"
+                Margin="10"
+                Columns="1">
+
+                <!--  设备  -->
+                <GroupBox Header="设备">
+                    <ItemsControl HorizontalAlignment="Center" ItemsSource="{Binding DeviceModels}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="10">
+                                    <TextBlock
+                                        HorizontalAlignment="Center"
+                                        FontSize="22"
+                                        Foreground="#2bedf1"
+                                        Text="{Binding Value}" />
+                                    <TextBlock
+                                        HorizontalAlignment="Center"
+                                        FontSize="12"
+                                        Foreground="White"
+                                        Text="{Binding Name}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <UniformGrid Columns="4" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
+
+                </GroupBox>
+
+                <!--  能耗  -->
+                <GroupBox Margin="0,5" Header="能耗" />
+
+                <!--  人力  -->
+                <GroupBox Header="人力" />
+
+            </UniformGrid>
         </Grid>
     </Grid>
 </UserControl>

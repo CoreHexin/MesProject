@@ -100,6 +100,18 @@ namespace MesProject.ViewModels
             }
         }
 
+        private List<DeviceModel> _deviceModels;
+
+        public List<DeviceModel> DeviceModels
+        {
+            get { return _deviceModels; }
+            set
+            {
+                _deviceModels = value;
+                RaisePropertyChanged();
+            }
+        }
+
         // 产能树状图数据集
         public ISeries[] CapacitySeries { get; set; }
 
@@ -114,8 +126,6 @@ namespace MesProject.ViewModels
 
         // 数据异常报警比例饼图数据集
         public ISeries[] AlarmSeries { get; set; }
-
-        public SolidColorPaint AlarmLegentTextPaint { get; set; }
 
         public MainWindowViewModel()
         {
@@ -165,6 +175,18 @@ namespace MesProject.ViewModels
                     DateTime = DateTime.Now,
                     Duration = 90,
                 },
+            };
+
+            _deviceModels = new List<DeviceModel>()
+            {
+                new DeviceModel() { Name = "电能(Kw.h)", Value = 60.8 },
+                new DeviceModel() { Name = "电压(V)", Value = 390 },
+                new DeviceModel() { Name = "电流(A)", Value = 5 },
+                new DeviceModel() { Name = "压差(kpa)", Value = 13 },
+                new DeviceModel() { Name = "温度(℃)", Value = 36 },
+                new DeviceModel() { Name = "振动(mm/s)", Value = 4.1 },
+                new DeviceModel() { Name = "转速(r/min)", Value = 2600 },
+                new DeviceModel() { Name = "气压(kpa)", Value = 0.5 },
             };
 
             CapacitySeries = new ISeries[]
