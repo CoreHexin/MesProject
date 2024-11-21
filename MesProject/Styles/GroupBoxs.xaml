@@ -8,7 +8,11 @@
                         BorderBrush="#9918aabd"
                         BorderThickness="1"
                         CornerRadius="8">
-                        <StackPanel>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
                             <StackPanel Orientation="Horizontal">
                                 <Path
                                     Margin="10,10,0,0"
@@ -28,8 +32,8 @@
                                     Foreground="White"
                                     Text="{TemplateBinding Header}" />
                             </StackPanel>
-                            <ContentPresenter />
-                        </StackPanel>
+                            <ContentPresenter Grid.Row="1" />
+                        </Grid>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>

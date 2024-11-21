@@ -316,10 +316,23 @@
                 </GroupBox>
 
                 <!--  能耗  -->
-                <GroupBox Margin="0,5" Header="能耗" />
+                <GroupBox Margin="0,5" Header="能耗">
+                    <!--<local:RadarChartControl  />-->
+                    <local:RadarChartControl
+                        Height="{Binding RelativeSource={RelativeSource AncestorType=GroupBox}, Path=ActualHeight, Converter={converters:ChartHeightConverter}}"
+                        LayerStroke="#66ffffff"
+                        RadialBrush="#66ffffff"
+                        Radials="5"
+                        Radius="80"
+                        ShowTitle="True"
+                        TitleFontSize="12"
+                        TitleForground="White"
+                        Titles="{Binding RadarTitles}"
+                        Values="{Binding RadarValues}" />
+                </GroupBox>
 
                 <!--  人力  -->
-                <GroupBox Header="人力" />
+                <!--<GroupBox Header="人力" />-->
 
             </UniformGrid>
         </Grid>

@@ -5,6 +5,7 @@ using LiveChartsCore.SkiaSharpView.Painting;
 using LiveChartsCore.SkiaSharpView.Painting.Effects;
 using MesProject.Models;
 using SkiaSharp;
+using System.Collections.ObjectModel;
 
 namespace MesProject.ViewModels
 {
@@ -112,7 +113,7 @@ namespace MesProject.ViewModels
             }
         }
 
-        // 产能树状图数据集
+        // 产能柱状图数据集
         public ISeries[] CapacitySeries { get; set; }
 
         public Axis[] CapacityXAxes { get; set; }
@@ -126,6 +127,30 @@ namespace MesProject.ViewModels
 
         // 数据异常报警比例饼图数据集
         public ISeries[] AlarmSeries { get; set; }
+
+        private ObservableCollection<double>? _radarValues;
+
+        public ObservableCollection<double>? RadarValues
+        {
+            get { return _radarValues; }
+            set
+            {
+                _radarValues = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        private ObservableCollection<string>? _radarTitles;
+
+        public ObservableCollection<string>? RadarTitles
+        {
+            get { return _radarTitles; }
+            set
+            {
+                _radarTitles = value;
+                RaisePropertyChanged();
+            }
+        }
 
         public MainWindowViewModel()
         {
@@ -188,6 +213,23 @@ namespace MesProject.ViewModels
                 new DeviceModel() { Name = "转速(r/min)", Value = 2600 },
                 new DeviceModel() { Name = "气压(kpa)", Value = 0.5 },
             };
+
+            var radarChartModels = new List<RadarChartModel>()
+            {
+                new RadarChartModel() { Name = "排烟风机", Value = 90 },
+                new RadarChartModel() { Name = "稳压设备", Value = 30 },
+                new RadarChartModel() { Name = "供水机", Value = 34.89 },
+                new RadarChartModel() { Name = "喷淋水泵", Value = 69.59 },
+                new RadarChartModel() { Name = "客梯", Value = 20 },
+            };
+
+            RadarValues = new ObservableCollection<double>();
+            RadarTitles = new ObservableCollection<string>();
+            foreach (var model in radarChartModels)
+            {
+                RadarValues.Add(model.Value);
+                RadarTitles.Add(model.Name);
+            }
 
             CapacitySeries = new ISeries[]
             {
