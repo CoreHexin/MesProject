@@ -6,12 +6,5 @@
     xmlns:local="clr-namespace:MesProject.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-    <Grid
-        x:Name="Grid_RadarChart"
-        MinWidth="150"
-        MinHeight="150"
-        Margin="10"
-        HorizontalAlignment="Center"
-        VerticalAlignment="Center"
-        SizeChanged="RadarChartControl_SizeChanged" />
+    <Grid x:Name="Grid_RadarChart" SizeChanged="RadarChartControl_SizeChanged" />
 </UserControl>

@@ -320,10 +320,12 @@
                     <!--<local:RadarChartControl  />-->
                     <local:RadarChartControl
                         Height="{Binding RelativeSource={RelativeSource AncestorType=GroupBox}, Path=ActualHeight, Converter={converters:ChartHeightConverter}}"
+                        Margin="40,0,0,-50"
+                        HorizontalAlignment="Center"
                         LayerStroke="#66ffffff"
                         RadialBrush="#66ffffff"
                         Radials="5"
-                        Radius="80"
+                        Radius="{Binding RelativeSource={RelativeSource Self}, Path=ActualHeight, Converter={converters:HeightToRadiusConverter}}"
                         ShowTitle="True"
                         TitleFontSize="12"
                         TitleForground="White"
@@ -332,7 +334,7 @@
                 </GroupBox>
 
                 <!--  人力  -->
-                <!--<GroupBox Header="人力" />-->
+                <GroupBox Header="人力" />
 
             </UniformGrid>
         </Grid>
