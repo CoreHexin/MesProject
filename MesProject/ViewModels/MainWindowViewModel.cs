@@ -1,11 +1,11 @@
-﻿using LiveChartsCore;
+﻿using System.Collections.ObjectModel;
+using LiveChartsCore;
 using LiveChartsCore.Measure;
 using LiveChartsCore.SkiaSharpView;
 using LiveChartsCore.SkiaSharpView.Painting;
 using LiveChartsCore.SkiaSharpView.Painting.Effects;
 using MesProject.Models;
 using SkiaSharp;
-using System.Collections.ObjectModel;
 
 namespace MesProject.ViewModels
 {
@@ -151,6 +151,8 @@ namespace MesProject.ViewModels
                 RaisePropertyChanged();
             }
         }
+
+        public List<WorkshopModel> WorkshopModels { get; set; }
 
         public MainWindowViewModel()
         {
@@ -357,6 +359,42 @@ namespace MesProject.ViewModels
                     DataLabelsPaint = new SolidColorPaint(SKColors.White),
                     DataLabelsFormatter = point =>
                         "光照 " + point.Coordinate.PrimaryValue.ToString(),
+                },
+            };
+
+            WorkshopModels = new List<WorkshopModel>()
+            {
+                new WorkshopModel()
+                {
+                    Name = "贴片车间",
+                    WorkingNum = 32,
+                    WaitingNum = 8,
+                    BreakdownNum = 4,
+                    HaltNum = 0,
+                },
+                new WorkshopModel()
+                {
+                    Name = "封装车间",
+                    WorkingNum = 20,
+                    WaitingNum = 8,
+                    BreakdownNum = 4,
+                    HaltNum = 0,
+                },
+                new WorkshopModel()
+                {
+                    Name = "焊接车间",
+                    WorkingNum = 32,
+                    WaitingNum = 8,
+                    BreakdownNum = 4,
+                    HaltNum = 0,
+                },
+                new WorkshopModel()
+                {
+                    Name = "贴片车间",
+                    WorkingNum = 68,
+                    WaitingNum = 8,
+                    BreakdownNum = 4,
+                    HaltNum = 0,
                 },
             };
         }

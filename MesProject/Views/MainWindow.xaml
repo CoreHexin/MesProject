@@ -9,7 +9,7 @@
     xmlns:vm="clr-namespace:MesProject.ViewModels"
     Title="生产监控平台"
     Width="1200"
-    Height="800"
+    Height="900"
     d:DataContext="{d:DesignInstance vm:MainWindowViewModel}"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
@@ -62,7 +62,10 @@
                     Orientation="Horizontal">
                     <Button Content="&#xe624;" Style="{StaticResource WindowControlButtonStyle}" />
                     <Button Content="&#xe600;" Style="{StaticResource WindowControlButtonStyle}" />
-                    <Button Content="&#xe609;" Style="{StaticResource WindowCloseButtonStyle}" />
+                    <Button
+                        Click="CloseButton_Click"
+                        Content="&#xe609;"
+                        Style="{StaticResource WindowCloseButtonStyle}" />
                 </StackPanel>
 
             </Grid>
