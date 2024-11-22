@@ -6,6 +6,8 @@ namespace MesProject.ValueConverters
     {
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            if ((double)value == 0)
+                return 0;
             return (double)value - 25;
         }
 
