@@ -1,0 +1,70 @@
+﻿<UserControl
+    x:Class="MesProject.Controls.WorkshopDetailControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:attached="clr-namespace:MesProject.AttachedProperties"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:MesProject.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="750"
+    d:DesignWidth="1200"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <Style TargetType="RadioButton">
+            <Setter Property="Background" Value="#efefef" />
+            <Setter Property="Width" Value="50" />
+            <Setter Property="Height" Value="30" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="Background" Value="Orange" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid attached:AnimationAttachedProperties.FadeInAndSlideFromBottom="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid Margin="20,10">
+            <Button
+                Width="65"
+                Height="35"
+                HorizontalAlignment="Left"
+                Command="{Binding DataContext.ShowIndexCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                Content="返回"
+                Style="{StaticResource RegularButtonStyle}"
+                Tag="&#xe632;" />
+            <StackPanel
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                Orientation="Horizontal">
+                <TextBlock
+                    Margin="0,0,10,0"
+                    VerticalAlignment="Center"
+                    FontSize="14"
+                    Foreground="White"
+                    Text="机台状态:" />
+                <RadioButton
+                    VerticalAlignment="Center"
+                    Content="全部"
+                    IsChecked="True" />
+                <RadioButton Content="作业" />
+                <RadioButton Content="等待" />
+                <RadioButton Content="故障" />
+                <RadioButton Content="停机" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>
