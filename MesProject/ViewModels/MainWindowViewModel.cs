@@ -1,11 +1,11 @@
-﻿using System.Collections.ObjectModel;
-using LiveChartsCore;
+﻿using LiveChartsCore;
 using LiveChartsCore.Measure;
 using LiveChartsCore.SkiaSharpView;
 using LiveChartsCore.SkiaSharpView.Painting;
 using LiveChartsCore.SkiaSharpView.Painting.Effects;
 using MesProject.Models;
 using SkiaSharp;
+using System.Collections.ObjectModel;
 
 namespace MesProject.ViewModels
 {
@@ -154,8 +154,32 @@ namespace MesProject.ViewModels
 
         public List<WorkshopModel> WorkshopModels { get; set; }
 
+        private ControlEnum _currentControl;
+
+        public ControlEnum CurrentControl
+        {
+            get { return _currentControl; }
+            set
+            {
+                _currentControl = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// 显示车间详情页面
+        /// </summary>
+        public DelegateCommand ShowWorkshopDetailCommand { get; set; }
+
+        /// <summary>
+        /// 显示首页
+        /// </summary>
+        public DelegateCommand ShowIndexCommand { get; set; }
+
         public MainWindowViewModel()
         {
+            _currentControl = ControlEnum.Index;
+
             UpdateTime();
             _machineCount = "298";
             _productCount = "1643";
@@ -397,6 +421,22 @@ namespace MesProject.ViewModels
                     HaltNum = 0,
                 },
             };
+
+            ShowWorkshopDetailCommand = new DelegateCommand();
+            ShowWorkshopDetailCommand.ExecuteAction = ShowWorkshopDetail;
+
+            ShowIndexCommand = new DelegateCommand();
+            ShowIndexCommand.ExecuteAction = ShowIndex;
+        }
+
+        private void ShowIndex(object? param)
+        {
+            CurrentControl = ControlEnum.Index;
+        }
+
+        private void ShowWorkshopDetail(object? param)
+        {
+            CurrentControl = ControlEnum.WorkshopDetail;
         }
 
         private void UpdateTime()

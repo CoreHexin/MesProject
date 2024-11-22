@@ -361,7 +361,12 @@
                                     Foreground="White"
                                     Text="{Binding Name}" />
                                 <TextBlock Margin="10" HorizontalAlignment="Right">
-                                    <Hyperlink Foreground="White" TextDecorations="None">[详情]</Hyperlink>
+                                    <Hyperlink
+                                        Command="{Binding DataContext.ShowWorkshopDetailCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                        Foreground="White"
+                                        TextDecorations="None">
+                                        [详情]
+                                    </Hyperlink>
                                 </TextBlock>
                             </Grid>
 
