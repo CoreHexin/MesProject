@@ -4,7 +4,7 @@ namespace MesProject.ViewModels
 {
     public class DelegateCommand : ICommand
     {
-        public Action<object?> ExecuteAction { get; set; }
+        public Action<object?>? ExecuteAction { get; set; }
 
         public Func<object?, bool>? CanExecuteFunc { get; set; } 
 
