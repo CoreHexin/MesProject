@@ -6,8 +6,6 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:MesProject.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:vm="clr-namespace:MesProject.ViewModels"
-    d:DataContext="{d:DesignInstance vm:WorkshopDetailViewModel}"
     d:DesignHeight="750"
     d:DesignWidth="1200"
     mc:Ignorable="d">
@@ -68,90 +66,5 @@
                 <RadioButton Content="停机" />
             </StackPanel>
         </Grid>
-
-        <ScrollViewer
-            Grid.Row="1"
-            Margin="10,5"
-            HorizontalScrollBarVisibility="Disabled"
-            VerticalScrollBarVisibility="Hidden">
-            <ItemsControl ItemsSource="{Binding MachineModels}">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <UniformGrid Columns="5" />
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Border
-                            Height="250"
-                            Margin="10,5"
-                            Padding="5"
-                            BorderBrush="#9918aabd"
-                            BorderThickness="0,1,0,0">
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="*" />
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
-                                </Grid.RowDefinitions>
-
-                                <Grid Margin="0,10,0,0">
-                                    <TextBlock
-                                        VerticalAlignment="Center"
-                                        FontSize="12"
-                                        Foreground="White">
-                                        <Run FontFamily="{StaticResource IconFont}" Text="&#xe661;" />
-                                        <Run Text="{Binding Name}" />
-                                    </TextBlock>
-
-                                    <StackPanel
-                                        HorizontalAlignment="Right"
-                                        VerticalAlignment="Center"
-                                        Orientation="Horizontal">
-                                        <Ellipse
-                                            Width="8"
-                                            Height="8"
-                                            Fill="LightGreen" />
-                                        <TextBlock
-                                            Margin="5,0,0,0"
-                                            Foreground="LightGreen"
-                                            Text="{Binding Status}" />
-                                    </StackPanel>
-                                </Grid>
-
-                                <local:RingControl Grid.Row="1" Percent="{Binding CompleteRate}" />
-
-                                <TextBlock
-                                    Grid.Row="2"
-                                    VerticalAlignment="Center"
-                                    Foreground="White">
-                                    <Run Foreground="#55ffffff" Text="任务进度: " />
-                                    <Run Text="{Binding CompleteNum}" />
-                                    <Run Text="/" />
-                                    <Run Text="{Binding PlanNum}" />
-                                </TextBlock>
-
-                                <TextBlock
-                                    Grid.Row="2"
-                                    HorizontalAlignment="Right"
-                                    VerticalAlignment="Center">
-                                    <Hyperlink Foreground="#55ffffff" TextDecorations="None">[详情]</Hyperlink>
-                                </TextBlock>
-
-                                <TextBlock
-                                    Grid.Row="3"
-                                    Margin="0,5,0,0"
-                                    VerticalAlignment="Center"
-                                    Foreground="White">
-                                    <Run Foreground="#55ffffff" Text="工单: " />
-                                    <Run Text="{Binding OrderNo}" />
-                                </TextBlock>
-                            </Grid>
-                        </Border>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        </ScrollViewer>
     </Grid>
 </UserControl>
