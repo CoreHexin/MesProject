@@ -61,8 +61,14 @@
                     Margin="0,0,0,15"
                     HorizontalAlignment="Right"
                     Orientation="Horizontal">
-                    <Button Content="&#xe624;" Style="{StaticResource WindowControlButtonStyle}" />
-                    <Button Content="&#xe600;" Style="{StaticResource WindowControlButtonStyle}" />
+                    <Button
+                        Click="MinimizeButton_Click"
+                        Content="&#xe624;"
+                        Style="{StaticResource WindowControlButtonStyle}" />
+                    <Button
+                        Click="MaximizeButton_Click"
+                        Content="&#xe600;"
+                        Style="{StaticResource WindowControlButtonStyle}" />
                     <Button
                         Click="CloseButton_Click"
                         Content="&#xe609;"
