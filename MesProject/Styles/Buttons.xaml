@@ -40,6 +40,18 @@
         </Style.Triggers>
     </Style>
 
+    <!--  机台趋势图关闭按钮样式  -->
+    <Style
+        x:Key="MachineCloseButtonStyle"
+        BasedOn="{StaticResource WindowControlButtonStyle}"
+        TargetType="Button">
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#66000000" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
     <!--  常规按钮样式  -->
     <Style x:Key="RegularButtonStyle" TargetType="Button">
         <Setter Property="Foreground" Value="#aaaaaa" />
