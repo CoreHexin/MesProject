@@ -31,10 +31,16 @@ namespace MesProject.AttachedProperties
             if (!(d is FrameworkElement element))
                 return;
 
+            element.Visibility = Visibility.Visible;
+
             bool value = (bool)e.NewValue;
             if (value)
             {
                 element.FadeInAndSlideFromBottom(0.3f);
+            }
+            else
+            {
+                element.FadeOutAndSlideToBottom(0.3f);
             }
         }
     }

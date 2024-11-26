@@ -61,5 +61,28 @@ namespace MesProject.Animation
             Storyboard.SetTargetProperty(animation, new PropertyPath("Margin"));
             storyboard.Children.Add(animation);
         }
+
+        /// <summary>
+        /// 从顶部向下滑出动画
+        /// </summary>
+        /// <param name="storyboard"></param>
+        /// <param name="seconds"></param>
+        public static void AddSlideToBottom(
+            this Storyboard storyboard,
+            float seconds,
+            double offset,
+            float decelerationRatio = 0.9f
+        )
+        {
+            var animation = new ThicknessAnimation
+            {
+                From = new Thickness(0),
+                To = new Thickness(0, offset, 0, -offset),
+                Duration = new Duration(TimeSpan.FromSeconds(seconds)),
+                DecelerationRatio = decelerationRatio,
+            };
+            Storyboard.SetTargetProperty(animation, new PropertyPath("Margin"));
+            storyboard.Children.Add(animation);
+        }
     }
 }

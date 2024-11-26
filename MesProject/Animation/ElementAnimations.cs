@@ -9,7 +9,21 @@ namespace MesProject.Animation
         {
             var storyboard = new Storyboard();
             storyboard.AddFadeIn(seconds);
-            storyboard.AddSlideFromBottom(seconds, element.ActualHeight);
+            double offset = element.ActualHeight > 0 ? element.ActualHeight : 50;
+            storyboard.AddSlideFromBottom(seconds, offset);
+            storyboard.Begin(element);
+        }
+
+        public static void FadeOutAndSlideToBottom(this FrameworkElement element, float seconds)
+        {
+            var storyboard = new Storyboard();
+            storyboard.AddFadeOut(seconds);
+            double offset = element.ActualHeight > 0 ? element.ActualHeight : 50;
+            storyboard.AddSlideToBottom(seconds, offset);
+            storyboard.Completed += (s, e) =>
+            {
+                element.Visibility = Visibility.Hidden;
+            };
             storyboard.Begin(element);
         }
     }
