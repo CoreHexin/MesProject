@@ -6,11 +6,14 @@ using LiveChartsCore.SkiaSharpView.Painting.Effects;
 using MesProject.Models;
 using SkiaSharp;
 using System.Collections.ObjectModel;
+using System.Windows.Threading;
 
 namespace MesProject.ViewModels
 {
     public class MainWindowViewModel : NotificationObject
     {
+        private readonly DispatcherTimer _timer = new DispatcherTimer();
+
         private string _timeStr = string.Empty;
 
         public string TimeStr
@@ -179,8 +182,9 @@ namespace MesProject.ViewModels
         public MainWindowViewModel()
         {
             _currentControl = ControlEnum.Index;
-
             UpdateTime();
+            StartTimer();
+            
             _machineCount = "298";
             _productCount = "1643";
             _unqualifiedCount = "34";
@@ -439,13 +443,6 @@ namespace MesProject.ViewModels
             CurrentControl = ControlEnum.WorkshopDetail;
         }
 
-        private void UpdateTime()
-        {
-            TimeStr = DateTime.Now.ToString("HH:mm");
-            DateStr = DateTime.Now.ToString("yyyy-MM-dd");
-            WeekStr = GetChineseWeek();
-        }
-
         private string GetChineseWeek()
         {
             int weekIndex = (int)DateTime.Now.DayOfWeek;
@@ -460,6 +457,22 @@ namespace MesProject.ViewModels
                 "星期六",
             };
             return weeks[weekIndex];
+        }
+
+        private async void StartTimer()
+        {
+            while (true)
+            {
+                UpdateTime();
+                await Task.Delay(1000);
+            }
+        }
+
+        private void UpdateTime()
+        {
+            TimeStr = DateTime.Now.ToString("HH:mm:ss");
+            DateStr = DateTime.Now.ToString("yyyy-MM-dd");
+            WeekStr = GetChineseWeek();
         }
     }
 }
