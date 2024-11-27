@@ -110,6 +110,7 @@
                 Height="35"
                 Margin="20,0"
                 VerticalAlignment="Center"
+                Click="SettingsButton_Click"
                 Content="配置"
                 Style="{StaticResource RegularButtonStyle}"
                 Tag="&#xe625;" />
