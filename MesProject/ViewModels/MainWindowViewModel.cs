@@ -6,14 +6,11 @@ using LiveChartsCore.SkiaSharpView.Painting.Effects;
 using MesProject.Models;
 using SkiaSharp;
 using System.Collections.ObjectModel;
-using System.Windows.Threading;
 
 namespace MesProject.ViewModels
 {
     public class MainWindowViewModel : NotificationObject
     {
-        private readonly DispatcherTimer _timer = new DispatcherTimer();
-
         private string _timeStr = string.Empty;
 
         public string TimeStr
